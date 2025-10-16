@@ -8,10 +8,9 @@ export const packageInfo: TokenRingPackage = {
   version: packageJSON.version,
   description: packageJSON.description,
   install(agentTeam: AgentTeam) {
-    const webHost = agentTeam.services.getItemByType(WebHostService);
-    if (webHost) {
+    agentTeam.services.waitForItemByType(WebHostService).then(webHost => {
       webHost.registerResource("defaultFrontend", new DefaultFrontendResource());
-    }
+    });
   },
 };
 
