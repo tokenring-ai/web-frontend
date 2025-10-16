@@ -1,0 +1,16 @@
+{
+  "name": "@tokenring-ai/web-frontend",
+  "version": "0.1.0",
+  "description": "Default React frontend for TokenRing agents",
+  "dependencies": {
+    "@tokenring-ai/agent": "0.1.0",
+    "@tokenring-ai/web-host": "0.1.0"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./*": "./*.ts"
+  },
+  "types": "./index.ts",
+  "license": "MIT",
+  "type": "module"
+}
