@@ -8,9 +8,7 @@ export default class DefaultFrontendResource implements WebResource {
   name = "DefaultFrontend";
 
   async register(server: FastifyInstance): Promise<void> {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    const distPath = join(__dirname, "frontend", "dist");
+    const distPath = join(import.meta.dirname, "frontend", "dist");
 
     await server.register(fastifyStatic, {
       root: distPath,
