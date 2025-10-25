@@ -1,16 +1,16 @@
 import {AgentTeam, TokenRingPackage} from "@tokenring-ai/agent";
 import {WebHostService} from "@tokenring-ai/web-host";
-import packageJSON from "./package.json" with {type: "json"};
 import DefaultFrontendResource from "./DefaultFrontendResource.js";
+import packageJSON from "./package.json" with {type: "json"};
 
 export default {
   name: packageJSON.name,
   version: packageJSON.version,
   description: packageJSON.description,
   install(agentTeam: AgentTeam) {
-    agentTeam.services.waitForItemByType(WebHostService).then(webHost => {
-      webHost.registerResource("defaultFrontend", new DefaultFrontendResource());
-    });
+    agentTeam.waitForService(WebHostService, webHost =>
+      webHost.registerResource("defaultFrontend", new DefaultFrontendResource())
+    );
   },
 } as TokenRingPackage;
 
