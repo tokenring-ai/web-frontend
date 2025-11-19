@@ -1,8 +1,7 @@
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import type { WebResource } from "@tokenring-ai/web-host/types";
-import type { FastifyInstance } from "fastify";
 import fastifyStatic from "@fastify/static";
+import type {WebResource} from "@tokenring-ai/web-host/types";
+import type {FastifyInstance} from "fastify";
+import {join} from 'path';
 
 export default class DefaultFrontendResource implements WebResource {
   name = "DefaultFrontend";

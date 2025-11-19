@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { AgentClient } from './client';
+import {useEffect, useRef, useState} from 'react';
+import {AgentClient} from './client';
 import './App.css';
 
 type Message = {
@@ -38,16 +38,16 @@ export default function App() {
       setMessages([]);
     });
     client.on('event:output.chat', (data: any) => {
-      setMessages(m => [...m, { type: 'chat', content: data.content }]);
+      setMessages(m => [...m, {type: 'chat', content: data.content}]);
     });
     client.on('event:output.reasoning', (data: any) => {
-      setMessages(m => [...m, { type: 'reasoning', content: data.content }]);
+      setMessages(m => [...m, {type: 'reasoning', content: data.content}]);
     });
     client.on('event:output.system', (data: any) => {
-      setMessages(m => [...m, { type: 'system', content: data.message, level: data.level }]);
+      setMessages(m => [...m, {type: 'system', content: data.message, level: data.level}]);
     });
     client.on('event:input.received', (data: any) => {
-      setMessages(m => [...m, { type: 'input', content: data.message }]);
+      setMessages(m => [...m, {type: 'input', content: data.message}]);
     });
     client.on('event:state.busy', (data: any) => {
       setBusy(true);
@@ -70,7 +70,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({behavior: 'smooth'});
   }, [messages]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -134,7 +134,7 @@ export default function App() {
           </div>
         ))}
         {busy && <div className="spinner">{busyMessage}</div>}
-        <div ref={messagesEndRef} />
+        <div ref={messagesEndRef}/>
       </div>
       <form onSubmit={handleSubmit} className="input-form">
         <input
